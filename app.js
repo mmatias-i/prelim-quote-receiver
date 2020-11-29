@@ -2,10 +2,15 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var quotesRoute = require('./routes/quotes');
+
+const config = require('config');
+const loggerConfig = config.get('log');
+const { setup } = require('@hippo/logger');
+setup(loggerConfig);
+const logger = require('@hippo/logger').named('prelim-quote-generator');
 
 var app = express();
 
@@ -13,7 +18,6 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -37,5 +41,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+logger.info('Starting prelim quote generator...');
 
 module.exports = app;
