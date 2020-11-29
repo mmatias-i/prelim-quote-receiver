@@ -1,0 +1,47 @@
+{
+  "root" : true,
+  "extends": ["semistandard"],
+  "parserOptions": { "ecmaVersion": 2018 },
+  "plugins": ["promise", "chai-friendly"],
+  "rules": {
+    "camelcase": ["error", {"allow": ["\\w+V\\d+_\\d+"], "properties": "never", "ignoreDestructuring": true}],
+    "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": true }],
+    "no-unused-expressions": 0,
+    "chai-friendly/no-unused-expressions": 2,
+    "no-console" : "error",
+    "indent": ["error", 4],
+    "comma-dangle": ["error", "always-multiline"],
+
+    "prefer-const": "off",
+    "lines-between-class-members": "off",
+    "no-prototype-builtins": "off",
+    "object-curly-spacing": "off",
+    "array-bracket-spacing": "off",
+    "quote-props": "off",
+
+    "promise/no-return-wrap": "error",
+    "promise/param-names": "error",
+    "promise/catch-or-return": "error",
+    "promise/no-promise-in-callback": "error",
+    "promise/no-callback-in-promise": ["error", { "exceptions": ["next"] }],
+    "promise/no-new-statics": "error",
+    "promise/no-return-in-finally": "error",
+    "promise/valid-params": "error",
+
+    "promise/always-return": "off",
+    "promise/no-nesting": "off",
+    "promise/avoid-new": "off",
+
+    "node/no-deprecated-api": "warn"
+  },
+  "globals": {
+    "_": false,
+    "sessionStorage": false,
+    "Blob": false,
+    "toaster": false,
+    "alert": false,
+    "auth2": false,
+    "AWS": false,
+    "Stripe": false
+  }
+}
